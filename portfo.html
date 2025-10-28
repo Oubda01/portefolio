@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oubda Wend Kuni Nourdine - Développeur Web Full Stack</title>
+    <!-- Chargement de Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chargement de la police Inter et des icônes Lucide -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        /* Configuration de la police Inter */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d1117; /* Fond très sombre */
+            color: #f0f8ff; /* Couleur du texte clair */
+        }
+        /* Style pour les barres de progression des compétences */
+        .skill-bar-inner {
+            transition: width 1s ease-in-out;
+        }
+        /* Style de la section Hero avec un gradient élégant */
+        #hero {
+            background: linear-gradient(135deg, #1f2a41 0%, #0d1117 50%, #4a2d5e 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        /* Pour les petits écrans, ajuster la taille du texte */
+        @media (max-width: 768px) {
+            #hero h1 { font-size: 2.5rem; }
+            #hero p { font-size: 1rem; }
+        }
+
+        /* Effet de carte subtil au survol */
+        .card-hover-effect {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Barre de Navigation Fixe -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-[#0d1117]/90 backdrop-blur-sm shadow-lg border-b border-gray-700/50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <!-- Logo/Nom -->
+            <a href="#hero" class="text-xl font-bold tracking-wider text-purple-400 hover:text-purple-300 transition duration-300">
+                W.N.O.
+            </a>
+            <!-- Liens de Navigation -->
+            <div class="space-x-4 flex">
+                <a href="#hero" class="text-sm font-medium hover:text-purple-400 transition duration-300 hidden sm:block">Accueil</a>
+                <a href="#projets" class="text-sm font-medium hover:text-purple-400 transition duration-300">Projets</a>
+                <a href="#about" class="text-sm font-medium hover:text-purple-400 transition duration-300">À propos</a>
+                <a href="#contact" class="text-sm font-medium hover:text-purple-400 transition duration-300">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        
+        <!-- 1. Page d'Accueil (Hero Section) -->
+        <section id="hero" class="text-center">
+            <div class="container mx-auto px-6 py-24">
+                <div class="max-w-4xl mx-auto">
+                    <!-- Slogan/Titre -->
+                    <h2 class="text-lg uppercase tracking-widest text-purple-300 mb-4 animate-in fade-in slide-in-from-top-4 duration-500">
+                        OUBDA WEND KUNI NOURDINE
+                    </h2>
+                    <h1 class="text-6xl sm:text-7xl lg:text-8xl font-extrabold mb-6 leading-tight">
+                        <span class="bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-300">
+                            Développeur Web Full Stack
+                        </span>
+                    </h1>
+                    <!-- Phrase d'accroche -->
+                    <p class="text-xl sm:text-2xl text-gray-300 mb-12 max-w-2xl mx-auto">
+                        Créer des solutions web robustes et sécurisées. Apprenti Pentester autodidacte.
+                    </p>
+                    <!-- Bouton d'appel à l'action -->
+                    <a href="#projets" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-full text-white bg-purple-600 hover:bg-purple-700 shadow-lg transition duration-300 transform hover:scale-105">
+                        Voir mes projets
+                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Section "À Propos de Moi" -->
+        <section id="about" class="py-20 lg:py-32 border-t border-gray-800">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h2 class="text-4xl font-bold mb-12 text-center">À Propos de Moi</h2>
+
+                <div class="grid md:grid-cols-3 gap-12 items-start">
+                    <!-- Photo et CV -->
+                    <div class="md:col-span-1 flex flex-col items-center">
+                        <!-- Photo Professionnelle (Placeholder) -->
+                        <img src="https://placehold.co/300x300/3c4858/f0f8ff?text=Votre+Photo" alt="Oubda Wend Kuni Nourdine, Développeur Web" class="rounded-full w-48 h-48 object-cover border-4 border-purple-500 shadow-xl mb-6">
+                        
+                        <!-- Téléchargement CV -->
+                        <a href="#" class="inline-flex items-center justify-center px-6 py-2 border border-purple-500 text-sm font-medium rounded-lg text-purple-300 hover:bg-purple-900 transition duration-300">
+                            <i data-lucide="download" class="w-4 h-4 mr-2"></i>
+                            Télécharger mon CV (PDF)
+                        </a>
+                    </div>
+                    
+                    <!-- Présentation -->
+                    <div class="md:col-span-2">
+                        <h3 class="text-2xl font-semibold mb-4 text-purple-400">Mon Parcours & Ma Philosophie</h3>
+                        <p class="text-gray-300 mb-6 leading-relaxed">
+                            Je suis Oubda Wend Kuni Nourdine, développeur web Full Stack indépendant et passionné par la création de solutions sur mesure. En tant qu'autodidacte, j'ai développé une grande rigueur dans l'apprentissage et une solide maîtrise des technologies front-end et back-end, avec une affinité particulière pour l'écosystème Python/Django.
+                        </p>
+                        <p class="text-gray-300 leading-relaxed">
+                            Mon statut d'apprenti pentester autodidacte me permet d'aborder chaque projet avec un fort accent sur la sécurité et la robustesse du code. Ma philosophie est de livrer des applications non seulement fonctionnelles, mais également performantes et protégées contre les vulnérabilités courantes.
+                        </p>
+
+                        <!-- Compétences Clés (Skills Bar) -->
+                        <div class="mt-8">
+                            <h4 class="text-xl font-semibold mb-4 text-purple-400">Compétences Techniques</h4>
+                            
+                            <!-- Skill Item: HTML -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium">HTML</span>
+                                    <span class="text-sm font-medium text-purple-300">90%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-inner bg-purple-600 h-2.5 rounded-full" style="width: 90%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill Item: CSS -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium">CSS (Tailwind, Bootstrap, etc.)</span>
+                                    <span class="text-sm font-medium text-purple-300">85%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-inner bg-purple-600 h-2.5 rounded-full" style="width: 85%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill Item: JavaScript -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium">JavaScript</span>
+                                    <span class="text-sm font-medium text-purple-300">60%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-inner bg-purple-600 h-2.5 rounded-full" style="width: 60%;"></div>
+                                </div>
+                            </div>
+                            
+                            <!-- Skill Item: Django -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium">Django (Python)</span>
+                                    <!-- POURCENTAGE MIS À JOUR -->
+                                    <span class="text-sm font-medium text-purple-300">70%</span> 
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-inner bg-purple-600 h-2.5 rounded-full" style="width: 70%;"></div>
+                                </div>
+                            </div>
+
+                            <!-- Skill Item: Bases de Données -->
+                            <div class="mb-4">
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-base font-medium">PostgreSQL / MySQL</span>
+                                    <span class="text-sm font-medium text-purple-300">75%</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                    <div class="skill-bar-inner bg-purple-600 h-2.5 rounded-full" style="width: 75%;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Section "Mes Projets" (AVEC CARROUSEL) -->
+        <section id="projets" class="py-20 lg:py-32 bg-[#171e28] border-t border-gray-800">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h2 class="text-4xl font-bold mb-16 text-center">Mes Projets Récents</h2>
+                
+                <!-- CAROUSEL CONTAINER -->
+                <div class="relative max-w-5xl mx-auto">
+
+                    <!-- Slides Container (Flexbox pour le défilement horizontal) -->
+                    <div id="carouselContainer" class="flex transition-transform duration-500 ease-in-out">
+                        
+                        <!-- Projet 1 : Logiciel de Suivi de Recouvrements (Votre Projet) -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.3333%] p-4">
+                            <div class="bg-[#243040] rounded-xl overflow-hidden shadow-2xl card-hover-effect h-full">
+                                <img src="https://placehold.co/600x400/7a2a51/f0f8ff?text=Logiciel+Recouvrements" alt="Logiciel de suivi de recouvrements" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Logiciel de Suivi de Recouvrements</h3>
+                                    <!-- DESCRIPTION COURTE MISE À JOUR -->
+                                    <p class="text-gray-400 mb-4 text-sm">Système web complet pour une société de gardiennage, gérant l'enregistrement, le suivi des recouvrements mensuels et la liste des impayés.</p>
+                                    <span class="inline-block bg-purple-800/50 text-purple-300 text-xs px-3 py-1 rounded-full font-medium">Django, PostgreSQL, Bootstrap, PDF/Excel Export</span>
+                                    <a href="#projet-detail-1" class="block mt-4 text-purple-300 hover:text-purple-400 transition duration-300 text-sm font-medium">
+                                        Voir les détails →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projet 2 (Exemple Générique) -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.3333%] p-4">
+                            <div class="bg-[#243040] rounded-xl overflow-hidden shadow-2xl card-hover-effect h-full">
+                                <img src="https://placehold.co/600x400/2a4365/f0f8ff?text=Dashboard+Analytics" alt="Tableau de bord" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Tableau de Bord Analytique</h3>
+                                    <p class="text-gray-400 mb-4 text-sm">Conception d'un tableau de bord personnalisable pour visualiser des métriques complexes avec JS.</p>
+                                    <span class="inline-block bg-purple-800/50 text-purple-300 text-xs px-3 py-1 rounded-full font-medium">Vanilla JS, HTML, CSS, MySQL</span>
+                                    <a href="#projet-detail-2" class="block mt-4 text-purple-300 hover:text-purple-400 transition duration-300 text-sm font-medium">
+                                        Voir les détails →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Projet 3 (Exemple Générique) -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.3333%] p-4">
+                            <div class="bg-[#243040] rounded-xl overflow-hidden shadow-2xl card-hover-effect h-full">
+                                <img src="https://placehold.co/600x400/2a4365/f0f8ff?text=Blog+Technologique" alt="Blog Technologique" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Plateforme de Blog Sécurisée</h3>
+                                    <p class="text-gray-400 mb-4 text-sm">Développement d'un système de gestion de contenu robuste et rapide, axé sur la sécurité.</p>
+                                    <span class="inline-block bg-purple-800/50 text-purple-300 text-xs px-3 py-1 rounded-full font-medium">Django, PostgreSQL, Sécurité</span>
+                                    <a href="#projet-detail-3" class="block mt-4 text-purple-300 hover:text-purple-400 transition duration-300 text-sm font-medium">
+                                        Voir les détails →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Projet 4 (Exemple Générique) -->
+                        <div class="min-w-full md:min-w-[50%] lg:min-w-[33.3333%] p-4">
+                            <div class="bg-[#243040] rounded-xl overflow-hidden shadow-2xl card-hover-effect h-full">
+                                <img src="https://placehold.co/600x400/2a4365/f0f8ff?text=Portfolio+Personnel" alt="Portfolio Personnel" class="w-full h-48 object-cover">
+                                <div class="p-6">
+                                    <h3 class="text-xl font-semibold text-purple-400 mb-2">Conception de Portfolio</h3>
+                                    <p class="text-gray-400 mb-4 text-sm">Création d'une vitrine professionnelle en utilisant les dernières normes HTML5 et CSS3 (Tailwind).</p>
+                                    <span class="inline-block bg-purple-800/50 text-purple-300 text-xs px-3 py-1 rounded-full font-medium">HTML, CSS, Tailwind CSS, JS</span>
+                                    <a href="#projet-detail-4" class="block mt-4 text-purple-300 hover:text-purple-400 transition duration-300 text-sm font-medium">
+                                        Voir les détails →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Boutons de Navigation (Affichés à partir de la taille MD) -->
+                    <button id="prevBtn" class="absolute top-1/2 -left-4 transform -translate-y-1/2 p-3 bg-purple-600/80 hover:bg-purple-700 rounded-full shadow-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 hidden md:block" aria-label="Projet précédent">
+                        <i data-lucide="chevron-left" class="w-6 h-6 text-white"></i>
+                    </button>
+                    <button id="nextBtn" class="absolute top-1/2 -right-4 transform -translate-y-1/2 p-3 bg-purple-600/80 hover:bg-purple-700 rounded-full shadow-lg transition duration-300 focus:outline-none focus:ring-2 focus:ring-purple-500 hidden md:block" aria-label="Projet suivant">
+                        <i data-lucide="chevron-right" class="w-6 h-6 text-white"></i>
+                    </button>
+
+                    <!-- Indicateurs de Navigation (Dots) -->
+                    <div id="carouselDots" class="flex justify-center space-x-2 mt-8">
+                        <!-- Les points seront générés par JavaScript -->
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Page de Détails de Projet 1 (Logiciel de Recouvrement) -->
+        <section id="projet-detail-1" class="py-20 lg:py-32 border-t border-gray-800">
+            <div class="container mx-auto px-6 lg:px-8 max-w-4xl">
+                <a href="#projets" class="text-purple-400 hover:text-purple-300 transition duration-300 mb-8 inline-flex items-center">
+                    <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Retour aux projets
+                </a>
+                
+                <h2 class="text-5xl font-extrabold mb-4 text-white">Logiciel Web de Suivi de Recouvrements</h2>
+                <p class="text-xl text-gray-400 mb-8">Développement Full-Stack pour Sociétés de Gardiennage, 2024</p>
+
+                <!-- Description détaillée MISE À JOUR -->
+                <div class="space-y-6 text-gray-300 mb-12">
+                    <p><strong>Contexte & Objectifs:</strong> Ce logiciel a été conçu spécifiquement pour une société de gardiennage. Son objectif principal est de permettre l'enregistrement, le suivi et la gestion centralisée des **recouvrements mensuels** réalisés chaque mois par l'entreprise.</p>
+                    <p><strong>Fonctionnalités Clés:</strong> Le système inclut l'enregistrement des paiements, la génération automatique de la **liste des impayés**, une gestion fine des **utilisateurs** et un affichage clair des données via un **tableau de bord moderne (Bootstrap)**. Il intègre également des fonctionnalités essentielles de bureautique : l'exportation des données sous format **PDF et Excel**, ainsi que des **filtres avancés par période** pour l'analyse financière.</p>
+                    <p><strong>Technologies & Mon Rôle:</strong> Développé avec **Django** (pour le back-end robuste et sécurisé) et une base de données **PostgreSQL/MySQL**, j'ai assuré l'intégralité du cycle de développement. L'utilisation de Bootstrap a permis de garantir un tableau de bord réactif et une interface utilisateur efficace pour la gestion des recouvrements.</p>
+                </div>
+
+                <!-- Technologies & Outils -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-purple-400 mb-4">Technologies Utilisées</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-red-600/50 text-red-300 px-3 py-1 rounded-full text-sm font-medium">Django (Python)</span>
+                        <span class="bg-blue-600/50 text-blue-300 px-3 py-1 rounded-full text-sm font-medium">PostgreSQL / MySQL</span>
+                        <span class="bg-indigo-600/50 text-indigo-300 px-3 py-1 rounded-full text-sm font-medium">Bootstrap (Front-end)</span>
+                        <span class="bg-green-600/50 text-green-300 px-3 py-1 rounded-full text-sm font-medium">Export PDF/Excel</span>
+                        <span class="bg-yellow-600/50 text-yellow-300 px-3 py-1 rounded-full text-sm font-medium">Gestion Utilisateurs</span>
+                    </div>
+                </div>
+
+                <!-- Visuels (Captures d'écran) -->
+                <div class="grid md:grid-cols-2 gap-6 mb-12">
+                    <img src="https://placehold.co/600x400/243040/f0f8ff?text=Tableau+de+Bord+Recouvrements" alt="Maquette Tableau de bord" class="rounded-lg shadow-xl border border-gray-700">
+                    <img src="https://placehold.co/600x400/243040/f0f8ff?text=Liste+des+Impay%C3%A9s+%28Filtres%29" alt="Maquette Dossier Client" class="rounded-lg shadow-xl border border-gray-700">
+                </div>
+                
+                <!-- Résultats et CTA -->
+                <div class="text-center bg-purple-900/20 p-8 rounded-lg">
+                    <h3 class="text-2xl font-semibold mb-3 text-purple-300">Résultats & Impact</h3>
+                    <p class="text-gray-300 mb-6">Le système a permis d'améliorer la transparence des opérations et de faciliter l'identification rapide des impayés grâce à des outils de filtrage performants.</p>
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-purple-600 hover:bg-purple-700 transition duration-300 mr-4">
+                        <i data-lucide="monitor" class="w-5 h-5 mr-2"></i> Voir le projet en ligne
+                    </a>
+                    <a href="#" class="inline-flex items-center justify-center px-6 py-3 border border-gray-600 text-base font-medium rounded-lg text-gray-300 hover:bg-gray-800 transition duration-300">
+                        <i data-lucide="github" class="w-5 h-5 mr-2"></i> Voir le code source
+                    </a>
+                </div>
+
+            </div>
+        </section>
+        
+        <!-- Les autres sections de projets (détails 2, 3, 4) existent toujours mais sont génériques. -->
+
+        <!-- 4. Section "Témoignages" -->
+        <section id="temoignages" class="py-20 lg:py-32 bg-[#0d1117] border-t border-gray-800">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h2 class="text-4xl font-bold mb-16 text-center">Ce qu'ils disent de mon travail</h2>
+
+                <div class="grid md:grid-cols-2 gap-10">
+                    <!-- Témoignage 1 -->
+                    <div class="bg-[#171e28] p-8 rounded-xl shadow-xl border-l-4 border-purple-500">
+                        <i data-lucide="quote" class="w-8 h-8 text-purple-400 mb-4"></i>
+                        <p class="italic text-gray-300 mb-6">"La rigueur d'Oubda dans le développement et son souci de la sécurité ont été des atouts majeurs pour notre projet. Le résultat est stable et fiable."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/40x40/5a67d8/f0f8ff?text=J.D." alt="Photo de Jean Dupont" class="rounded-full w-10 h-10 mr-4">
+                            <div>
+                                <p class="font-semibold text-white">Jean Dupont</p>
+                                <p class="text-sm text-gray-400">CTO, Tech Solutions</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Témoignage 2 -->
+                    <div class="bg-[#171e28] p-8 rounded-xl shadow-xl border-l-4 border-purple-500">
+                        <i data-lucide="quote" class="w-8 h-8 text-purple-400 mb-4"></i>
+                        <p class="italic text-gray-300 mb-6">"En tant qu'autodidacte, sa capacité d'adaptation et sa vitesse d'apprentissage sont impressionnantes. Je le recommande vivement pour des projets complexes basés sur Django."</p>
+                        <div class="flex items-center">
+                            <img src="https://placehold.co/40x40/38a169/f0f8ff?text=L.M." alt="Photo de Léa Martin" class="rounded-full w-10 h-10 mr-4">
+                            <div>
+                                <p class="font-semibold text-white">Léa Martin</p>
+                                <p class="text-sm text-gray-400">Chef de Projet, Digital Innova</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Section "Contact" -->
+        <section id="contact" class="py-20 lg:py-32 border-t border-gray-800">
+            <div class="container mx-auto px-6 lg:px-8">
+                <h2 class="text-4xl font-bold mb-16 text-center">Entrons en contact</h2>
+
+                <div class="max-w-3xl mx-auto grid md:grid-cols-2 gap-12">
+                    
+                    <!-- Formulaire de contact -->
+                    <div class="md:col-span-1 bg-[#171e28] p-8 rounded-xl shadow-2xl">
+                        <h3 class="text-2xl font-semibold mb-6 text-purple-400">Envoyez-moi un message</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-300">Nom</label>
+                                <input type="text" id="name" name="name" class="mt-1 block w-full rounded-md border-gray-700 bg-gray-800 text-white shadow-sm focus:border-purple-500 focus:ring-purple-500 p-2.5" required>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+                                <input type="email" id="email" name="email" class="mt-1 block w-full rounded-md border-gray-700 bg-gray-800 text-white shadow-sm focus:border-purple-500 focus:ring-purple-500 p-2.5" required>
+                            </div>
+                            <div>
+                                <label for="message" class="block text-sm font-medium text-gray-300">Message</label>
+                                <textarea id="message" name="message" rows="4" class="mt-1 block w-full rounded-md border-gray-700 bg-gray-800 text-white shadow-sm focus:border-purple-500 focus:ring-purple-500 p-2.5" required></textarea>
+                            </div>
+                            <button type="submit" class="w-full inline-flex justify-center items-center px-6 py-3 border border-transparent text-base font-medium rounded-lg text-white bg-purple-600 hover:bg-purple-700 transition duration-300">
+                                Envoyer le message
+                                <i data-lucide="send" class="w-5 h-5 ml-2"></i>
+                            </button>
+                        </form>
+                        <div id="formMessage" class="mt-4 text-center hidden"></div>
+                    </div>
+
+                    <!-- Informations de contact et réseaux -->
+                    <div class="md:col-span-1 space-y-8">
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4 text-purple-400">Mes coordonnées</h3>
+                            <div class="space-y-3">
+                                <p class="flex items-center text-gray-300">
+                                    <i data-lucide="mail" class="w-5 h-5 text-purple-500 mr-3"></i>
+                                    <a href="mailto:nourdineoubda2@gmail.com" class="hover:text-purple-300 transition">nourdineoubda2@gmail.com</a>
+                                </p>
+                                <p class="flex items-center text-gray-300">
+                                    <i data-lucide="phone" class="w-5 h-5 text-purple-500 mr-3"></i>
+                                    +226 06957226 / +226 01258772
+                                </p>
+                                <p class="flex items-center text-gray-300">
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-purple-500 mr-3"></i>
+                                    Burkina Faso (Disponible à distance)
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Liens Professionnels (Personnaliser ces liens) -->
+                        <div>
+                            <h3 class="text-2xl font-semibold mb-4 text-purple-400">Réseaux Sociaux</h3>
+                            <div class="flex space-x-4">
+                                <!-- LinkedIn -->
+                                <a href="#" target="_blank" aria-label="LinkedIn" class="p-3 rounded-full bg-gray-700 hover:bg-purple-600 transition duration-300">
+                                    <i data-lucide="linkedin" class="w-6 h-6 text-white"></i>
+                                </a>
+                                <!-- GitHub -->
+                                <a href="#" target="_blank" aria-label="GitHub" class="p-3 rounded-full bg-gray-700 hover:bg-purple-600 transition duration-300">
+                                    <i data-lucide="github" class="w-6 h-6 text-white"></i>
+                                </a>
+                                <!-- Autre profil (e.g., Behance/Twitter/X) -->
+                                <a href="#" target="_blank" aria-label="Autre Profil" class="p-3 rounded-full bg-gray-700 hover:bg-purple-600 transition duration-300">
+                                    <i data-lucide="network" class="w-6 h-6 text-white"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 6. Pied de Page (Footer) -->
+    <footer class="bg-[#171e28] py-8 border-t border-gray-800">
+        <div class="container mx-auto px-6 lg:px-8 text-center">
+            
+            <!-- Navigation secondaire (optionnelle) -->
+            <div class="space-x-4 mb-4">
+                <a href="#about" class="text-sm text-gray-400 hover:text-purple-400 transition">Mentions Légales</a>
+                <span class="text-gray-600">|</span>
+                <a href="#contact" class="text-sm text-gray-400 hover:text-purple-400 transition">Plan du Site</a>
+            </div>
+
+            <!-- Droits d'auteur -->
+            <p class="text-sm text-gray-500">
+                © 2024 Oubda Wend Kuni Nourdine. Tous droits réservés.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript pour les fonctionnalités et les icônes -->
+    <script>
+        // Initialisation des icônes Lucide
+        lucide.createIcons();
+
+        // Fonctionnalité du formulaire de contact (Simulation d'envoi)
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formMessage = document.getElementById('formMessage');
+            formMessage.classList.remove('hidden');
+            formMessage.classList.remove('text-red-500', 'bg-red-900/30');
+            formMessage.classList.add('text-green-500', 'bg-green-900/30', 'p-3', 'rounded-lg');
+            formMessage.innerHTML = 'Message envoyé avec succès ! Je vous répondrai très bientôt.';
+            this.reset();
+            
+            // Masquer le message après 5 secondes
+            setTimeout(() => {
+                formMessage.classList.add('hidden');
+            }, 5000);
+        });
+
+        // Animation d'initialisation des barres de compétences
+        document.addEventListener('DOMContentLoaded', () => {
+            const skillBars = document.querySelectorAll('.skill-bar-inner');
+            skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0%';
+                // Petit délai pour assurer que la transition est visible après le chargement
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        });
+
+
+        // --- Logique du Carrousel de Projets ---
+        const carouselContainer = document.getElementById('carouselContainer');
+        // Les slides sont les enfants directs du conteneur (les <div> contenant chaque projet)
+        const slides = Array.from(carouselContainer.querySelectorAll(':scope > div')); 
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const dotsContainer = document.getElementById('carouselDots');
+
+        let currentIndex = 0;
+        let visibleSlides = 1; 
+
+        // Détermine combien de slides sont visibles à l'écran
+        function getVisibleSlides() {
+            if (window.innerWidth >= 1024) return 3; // lg: (33.3333%)
+            if (window.innerWidth >= 768) return 2; // md: (50%)
+            return 1; // mobile (100%)
+        }
+
+        // Met à jour la position du carrousel et les indicateurs
+        function updateCarousel() {
+            visibleSlides = getVisibleSlides();
+            
+            // Le pas de glissement est de 100% / le nombre de slides visibles
+            const slideStep = 100 / visibleSlides;
+            
+            // Nombre maximal d'étapes de translation. On ne peut pas afficher au-delà de la dernière slide visible.
+            const maxIndex = slides.length - visibleSlides;
+
+            // Assurer que l'index ne dépasse pas les limites (il ne peut pas être négatif)
+            if (currentIndex < 0) {
+                currentIndex = 0;
+            }
+            // Si l'index est trop grand, le ramener au maximum
+            if (currentIndex > maxIndex) {
+                currentIndex = maxIndex;
+            }
+            
+            // Calcul de la translation X en pourcentage
+            const translateX = -currentIndex * slideStep;
+            carouselContainer.style.transform = `translateX(${translateX}%)`;
+
+            // Mise à jour des dots
+            updateDots(visibleSlides);
+        }
+
+        // Gère la création et la mise à jour des points de navigation
+        function updateDots(slidesPerPage) {
+            dotsContainer.innerHTML = '';
+            // Calculer le nombre total de "pages" ou groupes de slides
+            const totalPages = Math.ceil(slides.length / slidesPerPage); 
+            // La page active est basée sur l'index de la première slide visible dans le groupe
+            const activePage = Math.floor(currentIndex / slidesPerPage);
+
+            for (let i = 0; i < totalPages; i++) {
+                const dot = document.createElement('button');
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition', 'duration-300', 'mx-1');
+                
+                // Mettre en évidence le point actif
+                dot.classList.add(i === activePage ? 'bg-purple-500' : 'bg-gray-600', 'hover:bg-purple-400');
+                dot.setAttribute('aria-label', `Aller à la page ${i + 1}`);
+
+                // Au clic sur un point, on déplace le carrousel au début de la page correspondante
+                dot.addEventListener('click', () => {
+                    currentIndex = i * slidesPerPage;
+                    updateCarousel();
+                });
+                dotsContainer.appendChild(dot);
+            }
+        }
+
+
+        // Gestion des événements pour les boutons Précédent/Suivant
+        prevBtn.addEventListener('click', () => {
+            // Recule d'un seul pas pour une meilleure expérience utilisateur
+            currentIndex = Math.max(0, currentIndex - 1);
+            updateCarousel();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            // Avance d'un seul pas
+            let maxIndex = slides.length - visibleSlides;
+            currentIndex = Math.min(maxIndex, currentIndex + 1);
+            updateCarousel();
+        });
+
+        // Gère le redimensionnement de la fenêtre
+        window.addEventListener('resize', () => {
+            // Réinitialiser la position et recalculer les slides visibles/dots
+            currentIndex = 0;
+            updateCarousel();
+        });
+
+        // Initialisation du carrousel au chargement de la page
+        window.addEventListener('load', updateCarousel);
+
+        // --- Fin Logique du Carrousel de Projets ---
+    </script>
+
+</body>
+</html>
+
